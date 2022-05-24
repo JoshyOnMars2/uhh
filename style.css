@@ -1,85 +1,66 @@
+/* Cool infinite background scrolling animation.
+ * Twitter: @kootoopas
+ */
+
+/* Exo thin font from Google. */
+@import url(https://fonts.googleapis.com/css?family=Exo:100);
+
+/* Background data (Original source: https://subtlepatterns.com/grid-me/) */
+$bg-url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC";
+$bg-width: 50px;
+$bg-height: 50px;
+
+/* Animations */
+@-webkit-keyframes bg-scrolling-reverse {
+  100% { background-position: $bg-width $bg-height; }
+}
+@-moz-keyframes    bg-scrolling-reverse {
+  100% { background-position: $bg-width $bg-height; }
+}
+@-o-keyframes      bg-scrolling-reverse {
+  100% { background-position: $bg-width $bg-height; }
+}
+@keyframes         bg-scrolling-reverse {
+  100% { background-position: $bg-width $bg-height; }
+}
+
+@-webkit-keyframes bg-scrolling {
+  0% { background-position: $bg-width $bg-height; }
+}
+@-moz-keyframes    bg-scrolling {
+  0% { background-position: $bg-width $bg-height; }
+}
+@-o-keyframes      bg-scrolling {
+  0% { background-position: $bg-width $bg-height; }
+}
+@keyframes         bg-scrolling {
+  0% { background-position: $bg-width $bg-height; }
+}
+
+/* Main styles */
 body {
-  --s: 25vmin;
-  --p: calc(var(--s) / 2);
-  --c1: pink;
-  --c2: dodgerblue;
-  --c3: white;
-  --bg: var(--c3);
-  --d: 4000ms;
-  --e: cubic-bezier(0.76, 0, 0.24, 1);
+  margin-top: 13.5rem;
   
-  background-color: var(--bg);
-  background-image:
-    linear-gradient(45deg, var(--c1) 25%, transparent 25%),
-    linear-gradient(-45deg, var(--c1) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--c2) 75%),
-    linear-gradient(-45deg, transparent 75%, var(--c2) 75%);
-  background-size: var(--s) var(--s);
-  background-position: 
-    calc(var(--p) *  1) calc(var(--p) *  0), 
-    calc(var(--p) * -1) calc(var(--p) *  1), 
-    calc(var(--p) *  1) calc(var(--p) * -1), 
-    calc(var(--p) * -1) calc(var(--p) *  0);
-  animation: 
-    color var(--d) var(--e) infinite,
-    position var(--d) var(--e) infinite;
-}
+  color: #999;
+  font: 400 16px/1.5 exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+  text-align: center;
+  /* img size is 50x50 */
+  background: url($bg-url) repeat 0 0;
+  
+  -webkit-animation: bg-scrolling-reverse .92s infinite; /* Safari 4+ */
+  -moz-animation:    bg-scrolling-reverse .92s infinite; /* Fx 5+ */
+  -o-animation:      bg-scrolling-reverse .92s infinite; /* Opera 12+ */
+  animation:         bg-scrolling-reverse .92s infinite; /* IE 10+ */
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function:    linear;
+  -o-animation-timing-function:      linear;
+  animation-timing-function:         linear;
+  
+  &::before {
+    content: "INFINITY";
 
-@keyframes color {
-  0%, 25% {
-    --bg: var(--c3);
-  }
-  26%, 50% {
-    --bg: var(--c1);
-  }
-  51%, 75% {
-    --bg: var(--c3);
-  }
-  76%, 100% {
-    --bg: var(--c2);
-  }
-}
-
-@keyframes position {
-  0% {
-    background-position: 
-      calc(var(--p) *  1) calc(var(--p) *  0), 
-      calc(var(--p) * -1) calc(var(--p) *  1), 
-      calc(var(--p) *  1) calc(var(--p) * -1), 
-      calc(var(--p) * -1) calc(var(--p) *  0);
-  }
-  25% {
-    background-position: 
-      calc(var(--p) *  1) calc(var(--p) *  4), 
-      calc(var(--p) * -1) calc(var(--p) *  5), 
-      calc(var(--p) *  1) calc(var(--p) *  3), 
-      calc(var(--p) * -1) calc(var(--p) *  4);
-  }
-  50% {
-    background-position: 
-      calc(var(--p) *  3) calc(var(--p) * 8), 
-      calc(var(--p) * -3) calc(var(--p) * 9), 
-      calc(var(--p) *  2) calc(var(--p) * 7), 
-      calc(var(--p) * -2) calc(var(--p) * 8);
-  }
-  75% {
-    background-position: 
-      calc(var(--p) *  3) calc(var(--p) * 12), 
-      calc(var(--p) * -3) calc(var(--p) * 13), 
-      calc(var(--p) *  2) calc(var(--p) * 11), 
-      calc(var(--p) * -2) calc(var(--p) * 12);
-  }
-  100% {    
-    background-position: 
-      calc(var(--p) *  5) calc(var(--p) * 16), 
-      calc(var(--p) * -5) calc(var(--p) * 17), 
-      calc(var(--p) *  5) calc(var(--p) * 15), 
-      calc(var(--p) * -5) calc(var(--p) * 16);
-  }
-}
-
-@media (prefers-reduced-motion) {
-  body {
-    animation: none;
+    font-size: 8rem;
+    font-weight: 100;
+    font-style: normal;
   }
 }
