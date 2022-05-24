@@ -27,9 +27,14 @@
     // The platforms
     var platforms = [];
     // Function to render the canvas
+    
+    let box = document.querySelector('.box');
+        let width = box.offsetWidth;
+        let height = box.offsetHeight;
+    
     function rendercanvas(){
         ctx.fillStyle = "#F0F8FF";
-        ctx.fillRect(0, 0, 270, 270);
+        ctx.fillRect(0, 0, width, height);
     }
     // Function to render the player
     function renderplayer(){
