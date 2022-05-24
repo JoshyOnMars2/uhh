@@ -3,7 +3,7 @@
 }
 
 .sliding-background {
-  background: url("/shopifymenuitems-14_1200x1200.webp") repeat-x;
+  background: url("./shopifymenuitems-14_1200x1200.webp") repeat-x;
   height: 560px;
   width: 5076px;
   animation: slide 60s linear infinite;
